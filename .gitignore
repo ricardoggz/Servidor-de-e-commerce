@@ -1,3 +1,4 @@
 #despendencias
 /node_modules
-.env
+##rutas
+/.env
