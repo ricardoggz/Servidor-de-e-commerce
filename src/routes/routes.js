@@ -5,15 +5,15 @@ const routesApp = Router();
 //GET
 routesApp.get("/api/", controller.getHome);
 
-routesApp.get("/api/students", controller.getUsers);
+routesApp.get("/api/users", controller.getUsers);
 
 //POST
-routesApp.post("/students", controller.addUsers);
+routesApp.post("/users", controller.addUsers);
 
 //PUT
-routesApp.put("/students/:id", controller.editUser);
+routesApp.put("/users/:id", controller.editUser);
 
 //DELETE
-routesApp.delete("/students/:id", controller.deleteUser);
+routesApp.delete("/users/:id", controller.deleteUser);
 
 module.exports = routesApp;
