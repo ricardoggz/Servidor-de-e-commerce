@@ -2,9 +2,9 @@ const debug = require("debug")("app:controller");
 
 exports.getHome = (req, res) => {
   const message = {
-    message: "Binevenido a la api",
-  };
-  res.json(message);
+    message:"Bienvenido a la api",
+  }
+  res.send(`<h1>${message.message}</h1>`);
 };
 
 exports.getUsers = (req, res) => {
