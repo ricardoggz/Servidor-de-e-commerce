@@ -8,12 +8,12 @@ routesApp.get("/api/", controller.getHome);
 routesApp.get("/api/users", controller.getUsers);
 
 //POST
-routesApp.post("/users", controller.addUsers);
+routesApp.post("/api/users", controller.addUsers);
 
 //PUT
-routesApp.put("/users/:id", controller.editUser);
+routesApp.put("/api/users/:id", controller.editUser);
 
 //DELETE
-routesApp.delete("/users/:id", controller.deleteUser);
+routesApp.delete("/api/users/:id", controller.deleteUser);
 
 module.exports = routesApp;
