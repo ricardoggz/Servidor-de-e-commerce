@@ -2,18 +2,22 @@ const { Router } = require("express");
 const controller = require("../controllers/controller");
 const routesApp = Router();
 
-//GET
+//GET HOME API
 routesApp.get("/api/", controller.getHome);
 
+//GET all users
 routesApp.get("/api/users", controller.getUsers);
 
-//POST
+//GET one user
+routesApp.get("/api/users/:id", controller.getUser);
+
+//POST user
 routesApp.post("/api/users", controller.addUsers);
 
-//PUT
+//PUT user
 routesApp.put("/api/users/:id", controller.editUser);
 
-//DELETE
+//DELETE user
 routesApp.delete("/api/users/:id", controller.deleteUser);
 
 module.exports = routesApp;

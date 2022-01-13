@@ -1,45 +1,46 @@
 const debug = require("debug")("app:controller");
 const User = require("../models/users");
 
+//home api
 exports.getHome = (req, res) => {
-  const message = {
-    message: "Bienvenido a la api",
-  };
-  res.send(`<h1>${message.message}</h1>`);
+  res.send(`<h1>Bienvenido a la API</h1>`);
 };
 
+//all users
 exports.getUsers = (req, res) => {
-  User.find().then((data) => {
-    res.json(data);
-    debug("Peticion exitosa");
-  }).catch((error)=>{
-    res.json(error);
-    debug("Petición fallida");
-  });
+  User.find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
 };
 
+//one user
+exports.getUser = (req, res) => {
+  const { id } = req.params;
+  User.findById(id)
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
+};
+
+//create user
 exports.addUsers = (req, res) => {
   const user = User(req.body);
   user
     .save()
-    .then((data) => {
-      res.json(data);
-      debug("Datos almacenados correctamente");
-    })
-    .catch((error) => {
-      res.json(error);
-      debug("Datos inválidos");
-    });
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
 };
 
+//update user
 exports.editUser = (req, res) => {
-  const id = req.params.id;
-  debug(id);
-  res.json("datos recibidos para actualizar");
+  const { id } = req.params;
+  const { name, email } = req.body;
+  User.updateOne({ _id: id }, { $set: { name, email } })
+    .then((data) => res.json(data))
+    .catch((error) => res.json(error));
 };
 
+//delete user
 exports.deleteUser = (req, res) => {
-  const id = req.params.id;
-  debug(id);
-  res.json("datos recibidos para actualizar");
+  const { id } = req.params;
+  User.deleteOne({ _id: id });
 };
