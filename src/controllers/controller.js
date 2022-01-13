@@ -27,20 +27,17 @@ exports.getUsers = (req, res) => {
   res.json(users);
 };
 
-exports.addUsers = async (req, res) => {
-  try {
-    const { name, email } = req.body;
-    debug(name, email);
-    if (name && email) {
-      const newUser = new User({ name, email });
-      debug(newUser);
-      res.json("datos recibidos");
-    } else {
-      res.json("Datos inválidos");
-    }
-  } catch (error) {
-    res.json(error);
-  }
+exports.addUsers = (req, res) => {
+  const user = User(req.body);
+  user.save()
+    .then((data) => {
+      res.json(data);
+      debug("Datos almacenados correctamente");
+    })
+    .catch((error) => {
+      res.json(error);
+      debug("Datos inválidos");
+    });
 };
 
 exports.editUser = (req, res) => {
