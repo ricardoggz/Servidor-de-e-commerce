@@ -9,27 +9,19 @@ exports.getHome = (req, res) => {
 };
 
 exports.getUsers = (req, res) => {
-  const users = [
-    {
-      name: "Ricardo José Guevara Guzmán",
-      age: 21,
-    },
-    {
-      name: "Carolina Magos Salazar",
-      age: 21,
-    },
-    {
-      name: "Ernesto Guevara Guzmán",
-      age: 16,
-    },
-  ];
-
-  res.json(users);
+  User.find().then((data) => {
+    res.json(data);
+    debug("Peticion exitosa");
+  }).catch((error)=>{
+    res.json(error);
+    debug("Petición fallida");
+  });
 };
 
 exports.addUsers = (req, res) => {
   const user = User(req.body);
-  user.save()
+  user
+    .save()
     .then((data) => {
       res.json(data);
       debug("Datos almacenados correctamente");
