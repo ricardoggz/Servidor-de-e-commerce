@@ -42,5 +42,7 @@ exports.editUser = (req, res) => {
 //delete user
 exports.deleteUser = (req, res) => {
   const { id } = req.params;
-  User.deleteOne({ _id: id });
+  User.deleteOne({ _id: id })
+  .then((data)=>res.json(data))
+  .catch((error)=>res.json(error));
 };
