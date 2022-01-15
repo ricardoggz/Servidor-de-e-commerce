@@ -3,7 +3,7 @@ const routesApp = require("../routes/routes");
 const { dbConnection } =require("../database/index");
 const app = express();
 const cors = require("cors");
-app.use("/api", express.static("public"));
+app.use("/", express.static("public"));
 app.use(cors());
 app.use(express.json());
 app.use("/", routesApp);
