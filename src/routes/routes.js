@@ -2,9 +2,6 @@ const { Router } = require("express");
 const controller = require("../controllers/controller");
 const routesApp = Router();
 
-//GET HOME API
-routesApp.get("/api/", controller.getHome);
-
 //GET all users
 routesApp.get("/api/users", controller.getUsers);
 

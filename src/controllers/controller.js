@@ -1,11 +1,5 @@
 const debug = require("debug")("app:controller");
 const User = require("../models/users");
-
-//home api
-exports.getHome = (req, res) => {
-  res.send(`<h1>Bienvenido a la API</h1>`);
-};
-
 //all users
 exports.getUsers = (req, res) => {
   User.find()
