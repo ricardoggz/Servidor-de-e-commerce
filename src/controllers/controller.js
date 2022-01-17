@@ -17,7 +17,7 @@ exports.getUser = (req, res) => {
 
 //create user
 exports.addUsers = (req, res) => {
-  const user = User(req.body);
+  const user = new User(req.body);
   user
     .save()
     .then((data) => res.json(data))
