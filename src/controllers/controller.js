@@ -10,8 +10,8 @@ exports.getUsers = (req, res) => {
 
 //one user
 exports.getUser = (req, res) => {
-  const { id } = req.params;
-  User.findById(id)
+  const { email } = req.params;
+  User.findOne({ email })
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
 };

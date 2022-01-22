@@ -6,10 +6,10 @@ const routesApp = Router();
 routesApp.get("/api/users", controller.getUsers);
 
 //GET one user
-routesApp.get("/api/users/:id", controller.getUser);
+routesApp.get("/api/users/login", controller.getUser);
 
 //POST user
-routesApp.post("/api/users", controller.addUsers);
+routesApp.post("/api/users/signup", controller.addUsers);
 
 //PUT user
 routesApp.put("/api/users/:id", controller.editUser);
