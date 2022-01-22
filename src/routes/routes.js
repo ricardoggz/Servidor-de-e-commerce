@@ -6,7 +6,7 @@ const routesApp = Router();
 routesApp.get("/api/users", controller.getUsers);
 
 //GET one user
-routesApp.get("/api/users/login", controller.getUser);
+routesApp.post("/api/users/login", controller.getUser);
 
 //POST user
 routesApp.post("/api/users/signup", controller.addUsers);
