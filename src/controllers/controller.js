@@ -1,6 +1,10 @@
 const debug = require("debug")("app:controller");
+const bcrypt = require("bcryptjs/dist/bcrypt");
 const { response } = require("express");
 const User = require("../models/users");
+
+//encriptar contraseña
+const salt = bcrypt.genSaltSync();
 //all users
 exports.getUsers = (req, res) => {
   User.find()
@@ -19,10 +23,13 @@ exports.getUser = (req, res) => {
 //create user
 exports.addUsers = (req, res) => {
   const user = new User(req.body);
+  const { password } = req.body;
   user
     .save()
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
+
+  user.password= bcrypt.hashSync(password, salt);
 };
 
 //update user
