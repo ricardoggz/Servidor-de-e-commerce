@@ -3,6 +3,6 @@ const debug = require("debug")("app:main");
 const { Config } = require("./src/config/config");
 
 app.listen(Config.port, () => {
-  debug(`servidor iniciado en http://localhost:${Config.port}`);
-  console.log(`servidor iniciado en ${Config.port}`);
+  debug(`servidor iniciado en https://server-e-commerce-api.herokuapp.com/`);
+  console.log(`servidor iniciado en`);
 });
