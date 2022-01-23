@@ -1,11 +1,12 @@
 const express = require("express");
 const routesApp = require("../routes/routes");
+const menCategoryRoute = require("../routes/menCategory.router");
 const { dbConnection } =require("../database/index");
 const app = express();
 const cors = require("cors");
 app.use("/", express.static("public"));
 app.use(cors());
 app.use(express.json());
-app.use("/", routesApp);
+app.use("/", routesApp, menCategoryRoute);
 dbConnection();
 module.exports = app;

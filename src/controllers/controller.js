@@ -1,6 +1,4 @@
-const debug = require("debug")("app:controller");
 const bcrypt = require("bcryptjs/dist/bcrypt");
-const { response } = require("express");
 const User = require("../models/users");
 
 //encriptar contraseña
