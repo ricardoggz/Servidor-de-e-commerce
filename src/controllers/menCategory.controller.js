@@ -4,7 +4,7 @@ const MenProduct = require("../models/menCategory");
 exports.getProducts = (req, res) => {
   MenProduct.find()
     .then((data) => res.json(data))
-    .catch((error) => cres.json(data));
+    .catch((error) => res.json(error));
 };
 
 //add product photo
