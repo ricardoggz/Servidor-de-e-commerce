@@ -2,13 +2,10 @@ const { Router } = require("express");
 const controller = require("../controllers/controller");
 const routesApp = Router();
 
-//GET all users
-routesApp.get("/api/users", controller.getUsers);
-
-//GET one user
+//LOGIN
 routesApp.post("/api/users/login", controller.getUser);
 
-//POST user
+//SIGNUP
 routesApp.post("/api/users/signup", controller.addUsers);
 
 //PUT user

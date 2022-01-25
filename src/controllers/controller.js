@@ -1,16 +1,9 @@
 const bcrypt = require("bcryptjs/dist/bcrypt");
 const User = require("../models/users");
-
 //encriptar contraseña
 const salt = bcrypt.genSaltSync();
-//all users
-exports.getUsers = (req, res) => {
-  User.find()
-    .then((data) => res.json(data))
-    .catch((error) => res.json(error));
-};
 
-//one user
+//login user
 exports.getUser = (req, res) => {
   const { email } = req.params;
   User.findOne({ email })
@@ -18,7 +11,7 @@ exports.getUser = (req, res) => {
     .catch((error) => res.json(error));
 };
 
-//create user
+//signup user
 exports.addUsers = (req, res) => {
   const user = new User(req.body);
   const { password } = req.body;
