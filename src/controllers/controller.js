@@ -5,7 +5,7 @@ const salt = bcrypt.genSaltSync();
 
 //login user
 exports.getUser = (req, res) => {
-  const { email } = req.params;
+  const { email } = req.body;
   User.findOne({ email })
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
