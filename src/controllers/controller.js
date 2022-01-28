@@ -5,8 +5,9 @@ const salt = bcrypt.genSaltSync();
 
 //login user
 exports.getUser = (req, res) => {
-  const { email } = req.body;
-  User.findOne({ email })
+  const { email, password } = req.body;
+
+  User.findOne({ email, password })
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
 };
@@ -20,7 +21,7 @@ exports.addUsers = (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json(error));
 
-  user.password= bcrypt.hashSync(password, salt);
+  user.password = bcrypt.hashSync(password, salt);
 };
 
 //update user
